@@ -1,2 +1,1 @@
-export class FileUpload {
-}
+export class FileUpload { }
