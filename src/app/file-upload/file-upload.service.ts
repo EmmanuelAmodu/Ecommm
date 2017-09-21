@@ -15,7 +15,7 @@ export class UploadService {
   upload: Upload[];
 
   pushUpload(upload: Upload, productTitle: string, emitter?: Function) {
-    const append = `${productTitle}_${upload.file.name}`;
+    const append = `${productTitle}_${upload.file.name}`.replace(' ', '_');
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${append}`).put(upload.file);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -33,13 +33,8 @@ export class UploadService {
         upload.name = append;
         // tslint:disable-next-line:curly
         if (emitter) emitter(upload);
-        // this.saveFileData(upload);
       }
     );
-  }
-
-  deleteUpload(upload: Upload) {
-    this.deleteFileStorage(upload.name);
   }
 
   // Firebase files must have unique names in their respective storage dir
@@ -47,6 +42,10 @@ export class UploadService {
   private deleteFileStorage(name: string) {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete();
+  }
+
+  public deleteFile(file: Upload) {
+    this.deleteFileStorage(file.name);
   }
 
 }

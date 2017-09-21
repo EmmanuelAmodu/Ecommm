@@ -41,10 +41,20 @@ export class UploadFormComponent {
     _.each(filesIndex, (idx) => {
       this.currentUpload = new Upload(files[idx]);
       const uniqueTitle = `${this.productTitle}_${this.randomString()}`;
-      this.upSvc.pushUpload(this.currentUpload, uniqueTitle, function(){
-        that.uploader.emit(that.currentUpload);
+      this.upSvc.pushUpload(this.currentUpload, uniqueTitle, function(upload){
+        that.uploader.emit(upload);
       });
     });
+  }
+
+  deleteMulti (uploads: Upload[]) {
+    uploads.forEach(d => {
+      this.upSvc.deleteFile(d);
+    });
+  }
+
+  deleteSingle (uploads: Upload) {
+    this.upSvc.deleteFile(uploads);
   }
 
   private randomString() {

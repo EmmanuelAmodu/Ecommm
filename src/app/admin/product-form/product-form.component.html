@@ -49,23 +49,26 @@
       <div class="clearfix"></div>
 
       <button 
-        *ngIf="(uploadform.currentUpload && uploadform.currentUpload.progress == 100) || product.imageUrls[0]" 
+        type="submit"
+        *ngIf="(uploadform.currentUpload && uploadform.currentUpload.progress == 100) || product.images[0]" 
         class="btn btn-primary float-left">
         Save
       </button>
 
       <button 
-        *ngIf="(uploadform.currentUpload && uploadform.currentUpload.progress == 100) || product.imageUrls[0]" 
-        class="btn btn-danger float-right">
+        type="button"
+        *ngIf="(uploadform.currentUpload && uploadform.currentUpload.progress == 100) || product.images[0]" 
+        class="btn btn-danger float-right"
+        (click)="delete()">
         Delete
       </button>     
-       
+
     </form>
   </div>
 
   <div class="col-md-6">
     <div class="card" style="width: 20rem;">
-      <img class="card-img-top" *ngIf="product.imageUrls[0]" [src]="product.imageUrls[0].url" alt="Product image goes here">
+      <img class="card-img-top" *ngIf="product.images[0]" [src]="product.images[0].url" alt="Product image goes here">
       <div class="card-body">
         <h4 class="card-title">{{ product.title }} <small>{{ product.price | currency:'NGN':true }}</small></h4>
         <p class="card-text">{{ product.description }}</p>
@@ -81,7 +84,7 @@
   </div>
   <div class="modal-body">
     <div class="card" style="width: 100%;">
-      <img class="card-img-top" *ngIf="product.imageUrls[0]" [src]="product.imageUrls[0].url" alt="Product image goes here">
+      <img class="card-img-top" *ngIf="product.images[0]" [src]="product.images[0].url" alt="Product image goes here">
       <div class="card-body">
         <h4 class="card-title">{{ title.value }} <small>{{ price.value | currency:'NGN':true }}</small></h4>
         <p class="card-text">{{ description.value }}</p>

@@ -1,4 +1,3 @@
-
 export interface AppUser {
     name: string;
     email: string;
@@ -10,7 +9,7 @@ export interface IProduct {
     price: number;
     category: string;
     description: string;
-    imageUrls: object[];
+    images: object[];
 }
 
 export class Product implements IProduct {
@@ -18,7 +17,7 @@ export class Product implements IProduct {
     public price: number;
     public category: string;
     public description: string;
-    public imageUrls: object[] = [];
+    public images: Upload[] = [];
 
     constructor(
         title?: string,

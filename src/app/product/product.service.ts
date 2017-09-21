@@ -24,4 +24,8 @@ export class ProductService {
   getOne(productId) {
     return this.db.object('/products/' + productId);
   }
+
+  delete(productId) {
+    return this.db.object(`/products/${productId}`).remove();
+  }
 }

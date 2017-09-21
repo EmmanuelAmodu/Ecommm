@@ -1,3 +1,4 @@
+import { UploadFormComponent } from '../../upload-form/upload-form.component';
 import { ViewChild } from '@angular/core';
 import { Product, Upload } from './../../models/app-user';
 import { CategoryService } from './../../category/category.service';
@@ -19,6 +20,8 @@ export class ProductFormComponent implements OnInit {
   id: string;
   product: Product = new Product();
 
+  @ViewChild('uploadform') uploadform: UploadFormComponent;
+
   constructor(
     private _router: Router,
     private _categoryService: CategoryService,
@@ -36,11 +39,20 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(content) {
+    console.log(this.product);
     // tslint:disable-next-line:curly
     if (this.id) this._productService.update(this.id, this.product);
     // tslint:disable-next-line:curly
     else this._productService.create(this.product);
     this.open(content);
+  }
+
+  public delete() {
+    // tslint:disable-next-line:curly
+    if (!confirm('Are you sure you want to delete this product')) return;
+    this.uploadform.deleteMulti(this.product.images);
+    this._productService.delete(this.id);
+    this._router.navigate(['/admin/products']);
   }
 
   open(content) {
@@ -72,7 +84,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   public productImage(event) {
-    const imageInfo = { name: event.name, url: event.url };
-    this.product.imageUrls.push(imageInfo);
+    console.log(event);
+    this.product.images.push(event);
   }
 }
