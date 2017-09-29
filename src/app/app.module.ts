@@ -57,7 +57,7 @@ import { UploadService } from './file-upload/file-upload.service';
     CustomFormsModule,
     DataTableModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductComponent },
       { path: 'products', component: ProductComponent },
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },

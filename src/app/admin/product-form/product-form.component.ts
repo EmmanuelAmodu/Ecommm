@@ -29,7 +29,7 @@ export class ProductFormComponent implements OnInit {
     private modalService: NgbModal,
     private _route: ActivatedRoute
   ) {
-    this.category$ = _categoryService.getCategories();
+    this.category$ = _categoryService.getAll();
     this.id = this._route.snapshot.paramMap.get('id');
     // tslint:disable-next-line:curly
     if (this.id) this._productService.getOne(this.id).take(1).subscribe(product => this.product = product);
