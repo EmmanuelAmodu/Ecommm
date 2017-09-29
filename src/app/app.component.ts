@@ -15,11 +15,14 @@ export class AppComponent {
     private userservice: UserService
   ) {
     _auth.user$.subscribe(user => {
-      if (user) {
-        userservice.save(user);
-        const returnUrl = localStorage.getItem('returnUrl');
-        _router.navigateByUrl(returnUrl);
-      }
+      // tslint:disable-next-line:curly
+      if (!user) return;
+      userservice.save(user);
+      const returnUrl = localStorage.getItem('returnUrl');
+      // tslint:disable-next-line:curly
+      if (!returnUrl) return;
+      localStorage.removeItem('returnUrl');
+      _router.navigateByUrl(returnUrl);
     });
   }
 }
