@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { CustomFormsModule } from 'ng2-validation/dist';
 import { ProductService } from './product/product.service';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,8 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { UploadService } from './file-upload/file-upload.service';
+import { ProductFilterComponent } from './product/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { UploadService } from './file-upload/file-upload.service';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
-    UploadFormComponent
+    UploadFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +100,8 @@ import { UploadService } from './file-upload/file-upload.service';
     UserService,
     CategoryService,
     ProductService,
-    UploadService
+    UploadService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

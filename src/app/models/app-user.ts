@@ -5,6 +5,7 @@ export interface AppUser {
 }
 
 export interface IProduct {
+    $key: string;
     title: string;
     price: number;
     category: string;
@@ -13,6 +14,7 @@ export interface IProduct {
 }
 
 export class Product implements IProduct {
+    public $key: string;
     public title: string;
     public price: number;
     public category: string;

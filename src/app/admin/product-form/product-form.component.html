@@ -83,13 +83,7 @@
     <h4 class="modal-title">{{ title.value }}</h4>
   </div>
   <div class="modal-body">
-    <div class="card" style="width: 100%;">
-      <img class="card-img-top" *ngIf="product.images[0]" [src]="product.images[0].url" alt="Product image goes here">
-      <div class="card-body">
-        <h4 class="card-title">{{ title.value }} <small>{{ price.value | currency:'NGN':true }}</small></h4>
-        <p class="card-text">{{ description.value }}</p>
-      </div>
-    </div>
+  <product-card [showActions]="false" [smallImage]="false"></product-card>
   </div>
   <div class="modal-footer justify-content-between">
     <button type="button" class="btn btn-outline-dark" (click)="goToProductList(c)">Product List</button>      
