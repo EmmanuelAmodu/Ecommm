@@ -57,23 +57,32 @@ export class Snapshot {
 }
 
 export class ShoppingCartItem {
-    constructor(public product: Product, public quantity: number) {}
-    get totalPrice() { return this.product.price * this.quantity; }
+    $key: string;
+    title: string;
+    images: Object[];
+    price: number;
+    quantity: number;
+
+    constructor(init?: Partial<ShoppingCartItem>) {
+        Object.assign(this, init);
+    }
+
+    get totalPrice() { return this.price * this.quantity; }
 }
 
 export class ShoppingCart {
     items: ShoppingCartItem[] = [];
 
-    constructor(public itemsMap: { [productId: string]:  ShoppingCartItem }) {
+    constructor(private itemsMap: { [productId: string]:  ShoppingCartItem }) {
+        this.itemsMap = itemsMap || {};
         // tslint:disable-next-line:forin
         for (const productId in itemsMap) {
             const item = itemsMap[productId];
-            this.items.push(new ShoppingCartItem(item.product, item.quantity));
+            this.items.push(new ShoppingCartItem({...item, $key: productId}));
         }
     }
 
     getQuantity(product: Product) {
-        console.log(product);
         const item = this.itemsMap[product.$key];
         return item ? item.quantity : 0;
     }

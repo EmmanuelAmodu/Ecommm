@@ -18,4 +18,8 @@ export class ShoppingCartComponent implements OnInit {
     this.cart$.subscribe(d => console.log(d));
   }
 
+  clearCart() {
+    this.shoppingCartService.clearCart();
+  }
+
 }
