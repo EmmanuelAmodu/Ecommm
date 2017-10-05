@@ -33,6 +33,7 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
 import { UploadService } from './file-upload/file-upload.service';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     ProductFormComponent,
     UploadFormComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,

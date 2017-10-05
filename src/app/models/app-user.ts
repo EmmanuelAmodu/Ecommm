@@ -55,3 +55,41 @@ export class Snapshot {
     bytesTransferred: number;
     totalBytes: number;
 }
+
+export class ShoppingCartItem {
+    constructor(public product: Product, public quantity: number) {}
+    get totalPrice() { return this.product.price * this.quantity; }
+}
+
+export class ShoppingCart {
+    items: ShoppingCartItem[] = [];
+
+    constructor(public itemsMap: { [productId: string]:  ShoppingCartItem }) {
+        // tslint:disable-next-line:forin
+        for (const productId in itemsMap) {
+            const item = itemsMap[productId];
+            this.items.push(new ShoppingCartItem(item.product, item.quantity));
+        }
+    }
+
+    getQuantity(product: Product) {
+        console.log(product);
+        const item = this.itemsMap[product.$key];
+        return item ? item.quantity : 0;
+    }
+
+    get totalPrice() {
+        let sum = 0;
+        this.items.forEach(d => sum += d.totalPrice);
+        return sum;
+    }
+
+    get totalItemCount() {
+        let count = 0;
+        // tslint:disable-next-line:forin
+        for (const productId in this.itemsMap) {
+          count += this.itemsMap[productId].quantity;
+        }
+        return count;
+    }
+}

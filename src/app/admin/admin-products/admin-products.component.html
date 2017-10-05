@@ -13,7 +13,7 @@
 
   <data-table-column [property]="'price'" [header]="'Price'" [sortable]="true" [resizable]="true">
     <ng-template #dataTableCell let-item="item">
-      {{ item.price | currency:'NGN':true }}
+        &#8358;{{ item.price }}
     </ng-template>
   </data-table-column>
 

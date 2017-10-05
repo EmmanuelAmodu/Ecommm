@@ -1,3 +1,4 @@
+import { ShoppingCart } from './../models/app-user';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
 import { Product } from '../models/app-user';
 import { Component, OnInit, Input } from '@angular/core';
@@ -13,7 +14,7 @@ export class ProductCardComponent {
   @Input() product;
   @Input('showActions') showActions = true;
   @Input('smallImage') smallImage = true;
-  @Input('shoppingCart') shoppingCart;
+  @Input('shoppingCart') shoppingCart: ShoppingCart;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -30,16 +31,4 @@ export class ProductCardComponent {
   addToCart() {
     this.cartService.addToCart(this.product);
   }
-
-  removeFromCart() {
-    this.cartService.removeFromCart(this.product);
-  }
-
-  getQuantity() {
-    // tslint:disable-next-line:curly
-    if (!this.shoppingCart) return 0;
-    const item = this.shoppingCart.items[this.product.$key];
-    return item ? item.quantity : 0;
-  }
-
 }

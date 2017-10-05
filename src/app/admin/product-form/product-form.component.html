@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="price">Price</label>
         <div class="input-group">
-          <span class="input-group-addon">$</span>
+          <span class="input-group-addon">&#8358;</span>
           <input #price="ngModel" [(ngModel)]="product.price" name="price" class="form-control" type="number" id="price" required [min]="0"/> 
           <span class="input-group-addon">.00</span>     
         </div>
@@ -70,7 +70,7 @@
     <div *ngIf="product.title" class="card" style="width: 20rem;">
       <img class="card-img-top" *ngIf="product.images[0]" [src]="product.images[0].url" alt="Product image goes here">
       <div class="card-body">
-        <h4 class="card-title">{{ product.title }} <small>{{ product.price | currency:'NGN':true }}</small></h4>
+        <h4 class="card-title">{{ product.title }} <small>&#8358;{{ product.price }}</small></h4>
         <p class="card-text">{{ product.description }}</p>
       </div>
     </div>
