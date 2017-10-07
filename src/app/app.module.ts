@@ -1,3 +1,4 @@
+import { OrderService } from './order/order.service';
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { CustomFormsModule } from 'ng2-validation/dist';
 import { ProductService } from './product/product.service';
@@ -34,6 +35,8 @@ import { UploadService } from './file-upload/file-upload.service';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     UploadFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 
       { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-      { path: 'orders/success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'orders/success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
 
       {
         path: 'admin/orders',
@@ -103,7 +108,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     CategoryService,
     ProductService,
     UploadService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

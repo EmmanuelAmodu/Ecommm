@@ -1,5 +1,5 @@
 import { UploadService } from '../file-upload/file-upload.service';
-import { Upload } from '../models/app-user';
+import { Upload } from '../models/models';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 

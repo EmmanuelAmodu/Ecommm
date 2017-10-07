@@ -1,9 +1,9 @@
-import { ShoppingCart } from './../models/app-user';
+import { ShoppingCart } from './../models/models';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { AppUser } from '../models/app-user';
+import { AppUser } from '../models/models';
 
 @Component({
   // tslint:disable-next-line:component-selector

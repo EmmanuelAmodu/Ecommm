@@ -1,6 +1,6 @@
 import { UploadFormComponent } from '../../upload-form/upload-form.component';
 import { ViewChild } from '@angular/core';
-import { Product, Upload } from './../../models/app-user';
+import { Product, Upload } from './../../models/models';
 import { CategoryService } from './../../category/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../product/product.service';

@@ -1,4 +1,4 @@
-import { Product } from '../models/app-user';
+import { Product } from '../models/models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 

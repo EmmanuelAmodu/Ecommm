@@ -1,4 +1,4 @@
-import { AppUser } from '../models/app-user';
+import { AppUser } from '../models/models';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';

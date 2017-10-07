@@ -13,6 +13,11 @@ export interface IProduct {
     images: object[];
 }
 
+export interface IImage {
+    name: string;
+    url: string;
+}
+
 export class Product implements IProduct {
     public $key: string;
     public title: string;
@@ -59,7 +64,7 @@ export class Snapshot {
 export class ShoppingCartItem {
     $key: string;
     title: string;
-    images: Object[];
+    images: Upload[];
     price: number;
     quantity: number;
 
@@ -100,5 +105,34 @@ export class ShoppingCart {
           count += this.itemsMap[productId].quantity;
         }
         return count;
+    }
+}
+
+export class Order {
+    datePlace: number;
+    items: any[];
+    totalPriceOfOrder: number;
+
+    constructor(
+        public shipping: any,
+        shoppingcart: ShoppingCart
+    ) {
+        this.datePlace = new Date().getTime();
+        this.items = shoppingcart.items.map(i => {
+            return {
+                product: {
+                    prodId: i.$key,
+                    title: i.title,
+                    image: i.images[0].url,
+                    price: i.price
+                },
+                quantity: i.quantity,
+                totalPrice: i.totalPrice
+            };
+        });
+        this.totalPriceOfOrder = 0;
+        this.items.forEach(d => {
+            this.totalPriceOfOrder += d.totalPrice;
+        });
     }
 }

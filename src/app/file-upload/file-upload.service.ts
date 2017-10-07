@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Upload, Snapshot } from '../models/app-user';
+import { Upload, Snapshot } from '../models/models';
 import * as firebase from 'firebase';
 
 @Injectable()

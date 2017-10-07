@@ -1,4 +1,4 @@
-import { AppUser } from '../models/app-user';
+import { AppUser } from '../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { User } from './user';
 import { Injectable } from '@angular/core';

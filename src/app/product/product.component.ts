@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { Product, ShoppingCart } from './../models/app-user';
+import { Product, ShoppingCart } from './../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';

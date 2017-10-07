@@ -1,6 +1,6 @@
-import { ShoppingCart } from './../models/app-user';
+import { ShoppingCart } from './../models/models';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { Product } from '../models/app-user';
+import { Product } from '../models/models';
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer  } from '@angular/platform-browser';
 

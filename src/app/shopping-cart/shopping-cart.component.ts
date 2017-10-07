@@ -1,4 +1,4 @@
-import { ShoppingCart } from './../models/app-user';
+import { ShoppingCart } from './../models/models';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCartService } from './shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +15,6 @@ export class ShoppingCartComponent implements OnInit {
 
   async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
-    this.cart$.subscribe(d => console.log(d));
   }
 
   clearCart() {

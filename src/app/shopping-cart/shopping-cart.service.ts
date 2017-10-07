@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { async } from '@angular/core/testing';
-import { Product, ShoppingCart } from './../models/app-user';
+import { Product, ShoppingCart } from './../models/models';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take';
