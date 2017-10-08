@@ -2,7 +2,7 @@ import { OrderService } from './../order/order.service';
 import { AuthService } from './../auth/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Order, ShoppingCart } from './../models/models';
 
 @Component({
@@ -13,13 +13,13 @@ import { Order, ShoppingCart } from './../models/models';
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
+  @Output('orderPlacementStatus') orderPlacementStatus  = new EventEmitter();
 
   shipping = {};
   userSubscription: Subscription;
   userId: string;
 
   constructor(
-    private router: Router,
     private authService: AuthService,
     private orderService: OrderService
   ) {}
@@ -31,7 +31,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   async placeOrder() {
     const order = new Order(this.shipping, this.cart);
     const result$ = await this.orderService.placeOrder(order, this.userId);
-    this.router.navigate(['/orders', 'success', result$.key]);
+    this.orderPlacementStatus.emit(result$);
   }
 
   ngOnDestroy() {

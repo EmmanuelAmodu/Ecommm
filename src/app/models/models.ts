@@ -127,12 +127,34 @@ export class Order {
                     price: i.price
                 },
                 quantity: i.quantity,
-                totalPrice: i.totalPrice
+                totalPrice: i.totalPrice,
             };
         });
         this.totalPriceOfOrder = 0;
         this.items.forEach(d => {
             this.totalPriceOfOrder += d.totalPrice;
         });
+    }
+}
+
+export class ShippingAddress {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    name: string;
+}
+
+export class UserOrders {
+    datePlace: number;
+    items: any[];
+    orderid: string;
+    shipping: ShippingAddress;
+    totalPriceOfOrder: number;
+    userId: string;
+
+    constructor(order: any, orderid, userId) {
+        Object.assign(this, order);
+        this.orderid = orderid;
+        this.userId = userId;
     }
 }

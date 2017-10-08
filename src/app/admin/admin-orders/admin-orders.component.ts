@@ -1,5 +1,7 @@
+import { FirebaseObjectObservable } from 'angularfire2/database';
+import { Order, UserOrders } from './../../models/models';
 import { OrderService } from './../../order/order.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-orders',
@@ -8,8 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminOrdersComponent {
   orders$;
+  orders: UserOrders[] = [];
 
   constructor(private orderService: OrderService) {
-    this.orders$ = orderService.getOrders();
+      this.orderService.getAllUsersOrders().subscribe(d => {
+        this.flattenOrders(d);
+      });
+  }
+
+  private flattenOrders(d: any) {
+    d.forEach(el => {
+      // tslint:disable-next-line:forin
+      for (const key in el) {
+          this.orders.push(new UserOrders(el[key], key, el.$key));
+      }
+      console.log(this.orders);
+  });
   }
 }

@@ -1,6 +1,7 @@
+import { Order } from './../models/models';
 import { AuthService } from './../auth/auth.service';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -14,12 +15,11 @@ export class OrderService {
     return result;
   }
 
-  getOrders(userId?: string) {
-    // tslint:disable-next-line:curly
-    if (userId)
+  getUsersOrders(userId?: string) {
       return this.db.list('/orders/' + userId);
-    // tslint:disable-next-line:curly
-    else
-      return this.db.object('/orders');
+  }
+
+  getAllUsersOrders() {
+      return this.db.list('/orders');
   }
 }

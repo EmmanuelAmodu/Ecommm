@@ -24,6 +24,7 @@
     "@angular/router": "^4.2.4",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.4",
     "angular-4-data-table": "^0.2.3",
+    "angular4-paystack": "^1.2.1",
     "angularfire2": "^4.0.0-rc.2",
     "bootstrap": "^4.0.0-beta",
     "core-js": "^2.4.1",

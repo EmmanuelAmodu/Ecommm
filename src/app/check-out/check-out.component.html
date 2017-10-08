@@ -1,9 +1,22 @@
 <h2>Shipping</h2>
 <div class="row" *ngIf="cart$ | async as cart">
   <div class="col-6">
-    <shipping-form [cart]="cart"></shipping-form>
+    <shipping-form [cart]="cart" (orderPlacementStatus)="callPayStackForm($event)"></shipping-form>
   </div>
   <div class="col-6">
       <shopping-cart-summary [cart]="cart"></shopping-cart-summary> 
   </div>
+
+  <angular4-paystack 
+    *ngIf="showPaystack"
+    [key]="'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+    [email]="'mailexample@mail.com'"
+    [amount]="5000000"
+    [ref]="'2637458697'"
+    [class]="'btn btn-primary'"
+    (close)="paymentCancel()"
+    (callback)="paymentDone($event)"
+>Pay with Paystack</angular4-paystack>
+
 </div>
+
