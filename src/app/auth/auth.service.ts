@@ -22,11 +22,20 @@ export class AuthService {
     this.user$ = afAuth.authState;
   }
 
-  login() {
+  login(method: number) {
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
-
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    // tslint:disable-next-line:curly
+    switch (method) {
+      case 0:
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+        break;
+      case 1:
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+        break;
+      default:
+        break;
+    }
   }
 
   logout() {

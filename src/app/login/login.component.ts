@@ -12,8 +12,8 @@ export class LoginComponent {
     private _auth: AuthService
   ) { }
 
-  login(): void {
-    this._auth.login();
+  login(method: number): void {
+    this._auth.login(method);
   }
 
 }
