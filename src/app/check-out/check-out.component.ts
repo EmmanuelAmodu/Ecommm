@@ -11,28 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckOutComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
-  showPaystack: boolean;
-  orderKey: string;
 
   constructor(
-    private shoppingCartService: ShoppingCartService,
-    private router: Router,
+    private shoppingCartService: ShoppingCartService
   ) {}
-
-  callPayStackForm(event) {
-    console.log(event);
-    this.showPaystack = true;
-    this.orderKey = event.key;
-  }
-
-  paymentDone(event) {
-    console.log(event);
-    this.router.navigate(['/orders', 'success', this.orderKey]);
-  }
-
-  paymentCancel() {
-    console.log('cancelled');
-  }
 
   async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();

@@ -109,7 +109,7 @@ export class ShoppingCart {
 }
 
 export class Order {
-    datePlace: number;
+    datePlace: string;
     items: any[];
     totalPriceOfOrder: number;
 
@@ -117,7 +117,7 @@ export class Order {
         public shipping: any,
         shoppingcart: ShoppingCart
     ) {
-        this.datePlace = new Date().getTime();
+        this.datePlace = new Date().toJSON();
         this.items = shoppingcart.items.map(i => {
             return {
                 product: {

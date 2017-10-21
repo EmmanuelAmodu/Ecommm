@@ -13,7 +13,6 @@ import { Order, ShoppingCart } from './../models/models';
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
-  @Output('orderPlacementStatus') orderPlacementStatus  = new EventEmitter();
 
   shipping = {};
   userSubscription: Subscription;
@@ -21,6 +20,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     private orderService: OrderService
   ) {}
 
@@ -30,8 +30,8 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
 
   async placeOrder() {
     const order = new Order(this.shipping, this.cart);
-    const result$ = await this.orderService.placeOrder(order, this.userId);
-    this.orderPlacementStatus.emit(result$);
+    const orderO = await this.orderService.placeOrder(order, this.userId);
+    this.router.navigate(['/orders', 'success', orderO.key]);
   }
 
   ngOnDestroy() {

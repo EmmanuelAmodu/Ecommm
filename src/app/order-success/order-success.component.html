@@ -1,3 +1,10 @@
-<p>
-  order-success works!
-</p>
+  <angular4-paystack 
+    *ngIf="order"
+    [key]="'pk_test_f2d670213bfaa34649d676db2c2680c892fe44b1'"
+    [email]="'mailexample@mail.com'"
+    [amount]="order.totalPriceOfOrder + '00'"
+    [ref]="paymentId"
+    [class]="'btn btn-primary'"
+    (close)="paymentCancel()"
+    (callback)="paymentDone($event)"
+  >Pay with Paystack</angular4-paystack>

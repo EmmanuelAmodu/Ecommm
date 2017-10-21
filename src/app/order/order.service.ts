@@ -15,9 +15,13 @@ export class OrderService {
     return result;
   }
 
-  getUsersOrders(userId?: string) {
-      return this.db.list('/orders/' + userId);
+  getAllUserOrders(userId: string) {
+      return this.db.list(`/orders/${userId}`);
   }
+
+  getUserOrders(userId: string, order: string) {
+    return this.db.object(`/orders/${userId}/${order}`);
+}
 
   getAllUsersOrders() {
       return this.db.list('/orders');
