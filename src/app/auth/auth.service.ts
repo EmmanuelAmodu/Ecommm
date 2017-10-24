@@ -38,6 +38,18 @@ export class AuthService {
     }
   }
 
+  loginWithGoogle() {
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  }
+
+  loginWithFB() {
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+  }
+
   logout() {
     this.afAuth.auth.signOut();
   }
@@ -51,3 +63,5 @@ export class AuthService {
       });
   }
 }
+
+

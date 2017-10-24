@@ -12,8 +12,12 @@ export class LoginComponent {
     private _auth: AuthService
   ) { }
 
-  login(method: number): void {
-    this._auth.login(method);
+  loginWithGoogle(): void {
+    this._auth.loginWithGoogle();
+  }
+
+  loginWithFB() {
+    this._auth.loginWithFB();
   }
 
 }
