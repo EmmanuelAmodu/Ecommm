@@ -1,0 +1,9 @@
+button {
+    background-color: #cb9905;
+    border-color: #ffc107;
+    transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+button:hover {
+    background-color: #977206;
+    border-color: #cb9905;
+}

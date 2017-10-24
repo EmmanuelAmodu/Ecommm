@@ -4,9 +4,11 @@
 i {
     font-size: 28px;
     float: right;
-    margin-top: -6px;
     position: relative;
     padding-left: 10px;
+}
+i:hover {
+    color: #cb9905;
 }
 button {
     background-color: transparent;
