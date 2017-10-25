@@ -6,12 +6,24 @@ export class CategoryService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getAll() {
+  getAllCategory() {
     return this.db.list('/categories', {
       query: {
         orderByChild: 'name'
       }
     });
+  }
+
+  getOneCategory(categoryId) {
+    return this.db.object(`/categories/${categoryId}`);
+  }
+
+  create(product) {
+    return this.db.list('/products').push(product);
+  }
+
+  update(productId, product) {
+    this.db.object(`/products/${productId}`).update(product);
   }
 
 }

@@ -14,7 +14,7 @@ export class ProductService {
   }
 
   update(productId, product) {
-    this.db.object('/products/' + productId).update(product);
+    this.db.object(`/products/${productId}`).update(product);
   }
 
   getAll() {
@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   getOne(productId) {
-    return this.db.object('/products/' + productId);
+    return this.db.object(`/products/${productId}`);
   }
 
   delete(productId) {
