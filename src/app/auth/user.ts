@@ -1,2 +1,4 @@
 import * as firebase from 'firebase';
-export interface User extends firebase.User { }
+export interface User extends firebase.User {
+
+}

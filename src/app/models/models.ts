@@ -4,6 +4,13 @@ export interface AppUser {
     isAdmin: boolean;
 }
 
+export interface ICategory {
+    name: string;
+    description: string;
+    subCategory: ICategory[];
+    isActive: boolean;
+}
+
 export interface IProduct {
     $key: string;
     title: string;

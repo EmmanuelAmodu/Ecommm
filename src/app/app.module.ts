@@ -38,6 +38,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { PoductCategoryComponent } from './admin/poduct-category/poduct-category.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     ProductCardComponent,
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    PoductCategoryComponent
   ],
   imports: [
     Angular4PaystackModule,
@@ -88,6 +90,11 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
       {
         path: 'admin/products',
         component: AdminProductsComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
+      },
+      {
+        path: 'admin/category',
+        component: PoductCategoryComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
       {

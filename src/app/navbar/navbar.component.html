@@ -26,7 +26,8 @@
             <a class="dropdown-item" routerLink="/orders">Orders</a>
             <ng-container *ngIf="appUser.isAdmin">
               <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
-              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>            
+              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a class="dropdown-item" routerLink="/admin/category">Manage Categories</a>            
             </ng-container>
             <a class="dropdown-item" (click)="logout()">Logout</a>          
           </div>
@@ -38,7 +39,10 @@
   
         <ng-template #anonymousUser>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Login/Register</a>
+            <a class="nav-link" routerLink="/login">
+              Login/Register
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+            </a>
           </li>
         </ng-template>
   

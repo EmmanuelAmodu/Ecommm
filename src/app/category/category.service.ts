@@ -18,12 +18,12 @@ export class CategoryService {
     return this.db.object(`/categories/${categoryId}`);
   }
 
-  create(product) {
-    return this.db.list('/products').push(product);
+  create(category) {
+    return this.db.list('/categories').push(category);
   }
 
-  update(productId, product) {
-    this.db.object(`/products/${productId}`).update(product);
+  update(categoryId, category) {
+    this.db.object(`/categories/${categoryId}`).update(category);
   }
 
 }
