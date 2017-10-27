@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductFilterComponent {
   categories$;
-  @Input() category: string;
+  @Input() categoryParams: any;
 
   constructor(
     categoryService: CategoryService

@@ -15,7 +15,7 @@ import 'rxjs/add/operator/switchMap';
 export class ProductComponent implements  OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  category: string;
+  categoryParams: any;
   cart$: Observable<ShoppingCart>;
 
   constructor(
@@ -36,13 +36,14 @@ export class ProductComponent implements  OnInit {
       return this.route.queryParamMap;
     })
     .subscribe(params => {
-        this.category = params.get('category');
+        this.categoryParams = {category: params.get('category'), subcategory: params.get('subcategory')};
         this.applyFilter();
+        console.log(this.categoryParams);
     });
   }
 
   private applyFilter() {
-    this.filteredProducts = (this.category) ?
-      this.products.filter(p => p.category === this.category) : this.products;
+    this.filteredProducts = (this.categoryParams.category) ?
+      this.products.filter(p => p.category === this.categoryParams.category) : this.products;
   }
 }
