@@ -1,66 +1,69 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/cart">
-            Cart
-            <i class="shopping-cart fa fa-shopping-cart">
-              <span 
-                *ngIf="cart$ | async as carts"
-                class="badge badge-warning badge-pill">{{ carts.totalItemCount }}</span>
-            </i>
-          </a>
-        </li>
-  
-        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            {{ appUser.name }}
-          </a>
-          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" routerLink="/orders">Orders</a>
-            <ng-container *ngIf="appUser.isAdmin">
-              <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
-              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-              <a class="dropdown-item" routerLink="/admin/category">Manage Categories</a>            
-            </ng-container>
-            <a class="dropdown-item" (click)="logout()">Logout</a>          
-          </div>
-        </li>
-  
-        <a class="navbar-brand" routerLink="/">
-          <img src="assets/logo.png" alt="kolekole logo">
-        </a>
-  
-        <ng-template #anonymousUser>
+      <a class="navbar-brand" routerLink="/">
+        KOLEKOLE
+        <!-- <img src="assets/logo.png" alt="kolekole logo"> -->
+      </a>
+
+      <div class="navbar-nav navbar-icon" (click)="category_toggle = !category_toggle">
+        CATEGORY
+        <i 
+          class="fa" 
+          [class.fa-times]="category_toggle" 
+          [class.fa-bars]="!category_toggle" 
+        aria-hidden="true"></i>
+      </div>
+
+      <div class="navbar-nav navbar-icon">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search For Products" aria-label="Search">
+        </form>
+      </div>
+
+      <ul class="navbar-nav mr-auto nav-items-c">
+    
+          <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle navbar-icon" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              {{ appUser.name }}
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="/orders">Orders</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+                <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                <a class="dropdown-item" routerLink="/admin/category">Manage Categories</a>            
+              </ng-container>
+              <a class="dropdown-item" (click)="logout()">Logout</a>          
+            </div>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">
-              Login/Register
-              <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <a class="nav-link navbar-icon" routerLink="/cart">
+              Cart
+              <i class="shopping-cart fa fa-shopping-cart">
+                <span 
+                  *ngIf="cart$ | async as carts"
+                  class="badge badge-warning badge-pill">{{ carts.totalItemCount }}</span>
+              </i>
             </a>
           </li>
-        </ng-template>
-  
-      </ul>
-
-      <div class="navbar-nav">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button type="submit">
-              <i class="fa fa-search"></i>
-          </button>
-        </form>
-
-        <a class="nav-link" routerLink="/cart">
-          My Wishlist
-          <i class="fa fa-gift" aria-hidden="true"></i>
-        </a>
-      </div>
+    
+          <ng-template #anonymousUser>
+            <li class="nav-item">
+              <a class="nav-link navbar-icon" routerLink="/login">
+                Login/Register
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ng-template>
+    
+        </ul>
 
     </div>
   </div>

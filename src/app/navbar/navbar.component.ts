@@ -14,6 +14,7 @@ import { AppUser } from '../models/models';
 export class NavbarComponent implements OnInit {
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
+  category_toggle = false;
 
   constructor(
     private _auth: AuthService,
