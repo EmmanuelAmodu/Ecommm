@@ -40,6 +40,7 @@ input {
     left: 50%;
     position: absolute;
     text-align: center;
+    font-size: 18px;
 }
 input:focus {
     width: 55% !important;
@@ -65,5 +66,59 @@ li {
 }
 .nav-items-c {
     position: absolute;
+    right: 30px;
+}
+.padTop10 {
+    padding-top: 5px;
+    padding-left: 20px;
+}
+.multi-sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
     right: 0;
+    margin: auto;
+    width: 60%;
+    background-color: #fff;
+    padding: 24px 30px 27px;
+    z-index: 1;
+}
+.multi-sub-menu .left-menu-block {
+    float: left;
+    width: 30%;
+    margin-right: 1.8%;
+}
+.multi-sub-menu .left-menu-block .menu-block {
+    float: left;
+    margin-right: 3.6%;
+    width: 100%;
+}
+.multi-sub-menu .left-menu-block h3 {
+    font-size: 18px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid #dcdcdc;
+    text-align: left;
+    letter-spacing: 0.7px;
+    padding-bottom: 19px;
+    margin-bottom: 13px;
+    margin-top: 0;
+}
+.left-menu-block li {
+    width: 100px;
+    margin: 10px -10px;
+}
+.left-menu-block li a {
+    text-decoration: none;
+    color: #333;
+}
+.multi-sub-menu ul {
+    padding-left: 5px;
+    list-style: none;
+}
+.left-menu-block .sub-menu-links i {
+    color: #a2aeb5;
+    font-size: 12px;
+    margin: 8px 10px 0px 0px;
+    float: left;
 }

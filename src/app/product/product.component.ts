@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { Product, ShoppingCart } from './../models/models';
+import { ICategory, Product, ShoppingCart } from './../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/switchMap';
 export class ProductComponent implements  OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  categoryParams: any;
+  categoryParams: any = {};
   cart$: Observable<ShoppingCart>;
 
   constructor(
@@ -36,14 +36,26 @@ export class ProductComponent implements  OnInit {
       return this.route.queryParamMap;
     })
     .subscribe(params => {
-        this.categoryParams = {category: params.get('category'), subcategory: params.get('subcategory')};
-        this.applyFilter();
-        console.log(this.categoryParams);
+      this.categoryParams = {
+        category: params.get('category'),
+        subCategory: params.get('subcategory'),
+        search_term: params.get('search_term')
+      };
+      this.applyFilter();
     });
   }
 
   private applyFilter() {
-    this.filteredProducts = (this.categoryParams.category) ?
+    const filterByCat = (this.categoryParams.category) ?
       this.products.filter(p => p.category === this.categoryParams.category) : this.products;
+
+    const filterBySubCat = (this.categoryParams.subCategory) ?
+      this.products.filter(p => p.subCategory === this.categoryParams.subCategory) : filterByCat;
+
+    this.filteredProducts = (this.categoryParams.search_term) ?
+      this.products.filter(p => {
+        return p.title.toLocaleLowerCase().includes(this.categoryParams.search_term.toLocaleLowerCase()) ||
+        p.description.toLocaleLowerCase().includes(this.categoryParams.search_term.toLocaleLowerCase());
+      }) : filterBySubCat;
   }
 }

@@ -7,7 +7,7 @@ export interface AppUser {
 export interface ICategory {
     name: string;
     description: string;
-    subCategory: ICategory[];
+    subCategries: ICategory[];
     isActive: boolean;
 }
 
@@ -30,6 +30,7 @@ export class Product implements IProduct {
     public title: string;
     public price: number;
     public category: string;
+    public subCategory: string;
     public description: string;
     public images: Upload[] = [];
 
