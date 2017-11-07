@@ -6,8 +6,8 @@
   
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <a class="navbar-brand" routerLink="/">
-        KOLEKOLE
-        <!-- <img src="assets/logo.png" alt="kolekole logo"> -->
+        <!-- KOLEKOLE -->
+        <img src="assets/logo.png" alt="kolekole logo">
       </a>
 
       <div class="navbar-nav navbar-icon padTop10" (click)="category_toggle = !category_toggle">
@@ -21,7 +21,13 @@
         <div class="multi-sub-menu clearfix" *ngIf="category_toggle && categories">
           <div class="left-menu-block">
             <div class="menu-block" *ngFor="let c of categories">
-              <h3>{{ c.name }}</h3>
+              <h3>
+                <a
+                  routerLink="/"
+                  [queryParams]="{ category: c.$key }">
+                {{ c.name }}
+              </a>
+              </h3>
               <ul class="left-menu-block">
                 <li *ngFor="let subCat of c.subCategries">
                   <a 
@@ -35,6 +41,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="navbar-nav navbar-icon">

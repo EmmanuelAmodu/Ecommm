@@ -1,3 +1,6 @@
+nav > div {
+    height: 50px;
+}
 .dropdown-item {
     cursor: pointer;
 }
@@ -44,6 +47,10 @@ input {
 }
 input:focus {
     width: 55% !important;
+        color: #495057;
+        background-color: #fff;
+        border-color: none; 
+        box-shadow: none;
 }
 .shopping-cart span{
     position: absolute;
@@ -60,17 +67,26 @@ input:focus {
 li {
     margin: 0 10px;
 }
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0rem;
+    margin-right: 0rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
 .navbar-brand img {
     width: 200px;
-    margin-top: -10px;
+    margin-left: -30px;
 }
 .nav-items-c {
     position: absolute;
     right: 30px;
 }
 .padTop10 {
-    padding-top: 5px;
-    padding-left: 20px;
+    margin-top: 5px;
+    margin-left: -8px;
 }
 .multi-sub-menu {
     position: absolute;
@@ -78,20 +94,19 @@ li {
     left: 0;
     right: 0;
     margin: auto;
-    width: 60%;
+    width: 95%;
     background-color: #fff;
     padding: 24px 30px 27px;
     z-index: 1;
 }
 .multi-sub-menu .left-menu-block {
-    float: left;
-    width: 30%;
+    width: 100%;
     margin-right: 1.8%;
 }
 .multi-sub-menu .left-menu-block .menu-block {
     float: left;
-    margin-right: 3.6%;
-    width: 100%;
+    margin-right: 4%;
+    width: 20%;
 }
 .multi-sub-menu .left-menu-block h3 {
     font-size: 18px;
@@ -105,10 +120,10 @@ li {
     margin-top: 0;
 }
 .left-menu-block li {
-    width: 100px;
+    width: 120px;
     margin: 10px -10px;
 }
-.left-menu-block li a {
+.left-menu-block li a, .menu-block a {
     text-decoration: none;
     color: #333;
 }
