@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:fir": "git push origin staging & ng build --prod --aot=false & firebase deploy"
+    "deploy:fir": "git push origin master & ng build --prod --aot=false & firebase deploy"
   },
   "private": true,
   "dependencies": {
