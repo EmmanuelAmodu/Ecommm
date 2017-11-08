@@ -1,8 +1,29 @@
-<div class="row">
-  <div class="col-3">
-      <!-- <product-filter [category]="category"></product-filter> -->
-  </div>
-  <div class="col">
-    hello
-  </div>
+<div class="list-group centralize">
+    <a
+    routerLink="/admin/category"
+    [class.active]="categoryParams && !categoryParams.category"
+    class="list-group-item list-group-item-action">
+        All categories
+    </a>
+    
+    <div 
+    *ngFor="let c of categories$ | async" 
+    class="list-group-item list-group-item-action">
+        <a
+        routerLink="/admin/category"
+        [queryParams]="{ category: c.$key}">
+            {{ c.name }}
+        </a>
+
+        <div class="list-group" *ngIf="categoryParams.category == c.$key">
+            <a 
+            *ngFor="let sub of c.subCategries"
+            routerLink="/admin/category"
+            [queryParams]="{ category: c.$key, subcategory: sub.name }"
+            class="list-group-item list-group-item-action"
+            [class.active]="categoryParams.subcategory === sub.name">
+                {{ sub.name }}
+            </a>
+        </div>
+    </div>
 </div>

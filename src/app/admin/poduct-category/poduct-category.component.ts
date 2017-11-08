@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from './../../category/category.service';
+import { Component, Input } from '@angular/core';
 import { ICategory } from '../../models/models';
 
 @Component({
@@ -6,13 +8,19 @@ import { ICategory } from '../../models/models';
   templateUrl: './poduct-category.component.html',
   styleUrls: ['./poduct-category.component.css']
 })
-export class PoductCategoryComponent implements OnInit {
+export class PoductCategoryComponent {
+
+  categories$;
+  categoryParams: any = {};
 
   constructor(
-
-  ) { }
-
-  ngOnInit() {
+    categoryService: CategoryService,
+    private route: ActivatedRoute,
+  ) {
+    this.categories$ = categoryService.getAllCategories();
+    this.route.queryParams.subscribe(params => {
+      this.categoryParams = params;
+    });
   }
 
 }

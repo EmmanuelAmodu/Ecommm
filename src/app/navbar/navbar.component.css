@@ -44,6 +44,7 @@ input {
     position: absolute;
     text-align: center;
     font-size: 18px;
+    z-index: 2;
 }
 input:focus {
     width: 55% !important;
@@ -136,4 +137,16 @@ li {
     font-size: 12px;
     margin: 8px 10px 0px 0px;
     float: left;
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-text {
+        display: none;
+    }
+    input {
+        left: 52%;
+    }
+    .navbar-brand img {
+        width: 150px;
+    }
 }

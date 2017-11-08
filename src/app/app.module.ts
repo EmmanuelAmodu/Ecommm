@@ -33,7 +33,6 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { UploadService } from './file-upload/file-upload.service';
-import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
@@ -55,12 +54,11 @@ import { PoductCategoryComponent } from './admin/poduct-category/poduct-category
     LoginComponent,
     ProductFormComponent,
     UploadFormComponent,
-    ProductFilterComponent,
     ProductCardComponent,
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    PoductCategoryComponent
+    PoductCategoryComponent,
   ],
   imports: [
     Angular4PaystackModule,

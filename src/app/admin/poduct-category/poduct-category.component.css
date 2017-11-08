@@ -1,0 +1,19 @@
+.sticky-top {
+    top: 80px;
+}
+.list-group-item.active {
+    background-color: #cb9905;
+    border-color: #ffc107;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+.centralize {
+    width: 400px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50px;
+}

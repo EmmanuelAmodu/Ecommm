@@ -6,12 +6,11 @@
   
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <a class="navbar-brand" routerLink="/">
-        <!-- KOLEKOLE -->
         <img src="assets/logo.png" alt="kolekole logo">
       </a>
 
       <div class="navbar-nav navbar-icon padTop10" (click)="category_toggle = !category_toggle">
-        CATEGORY
+        <span class="nav-text">CATEGORY</span>
         <i 
           class="fa" 
           [class.fa-times]="category_toggle" 
@@ -55,7 +54,7 @@
           <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
             <a ngbDropdownToggle class="nav-link dropdown-toggle navbar-icon" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
-              {{ appUser.name }}
+              <span class="nav-text">{{ appUser.name }}</span>
             </a>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" routerLink="/orders">Orders</a>
@@ -70,7 +69,7 @@
 
           <li class="nav-item">
             <a class="nav-link navbar-icon" routerLink="/cart">
-              Cart
+              <span class="nav-text">Cart</span>
               <i class="shopping-cart fa fa-shopping-cart">
                 <span 
                   *ngIf="cart$ | async as carts"
@@ -82,7 +81,7 @@
           <ng-template #anonymousUser>
             <li class="nav-item">
               <a class="nav-link navbar-icon" routerLink="/login">
-                Login/Register
+                <span class="nav-text">Login/Register</span>
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
               </a>
             </li>

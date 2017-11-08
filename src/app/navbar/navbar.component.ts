@@ -1,8 +1,7 @@
 import { QueryParamsHandling } from '@angular/router/src/config';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FirebaseListObservable } from 'angularfire2/database';
 import { CategoryService } from './../category/category.service';
-import { ShoppingCart, ICategory } from './../models/models';
+import { ShoppingCart } from './../models/models';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -30,8 +29,8 @@ export class NavbarComponent implements OnInit {
   ) {
      this.categoryService.getAllCategories().subscribe(d => {
       this.categories = d;
-      console.log(d);
     });
+    console.log(window.innerWidth);
   }
 
   logout(): void {
@@ -39,7 +38,12 @@ export class NavbarComponent implements OnInit {
   }
 
   updateQueryParams(search_term) {
-    this.router.navigate(['/'], { queryParams: {search_term: search_term}, queryParamsHandling: 'merge' });
+    this.router.navigate(['/'], {
+      queryParams: {
+        search_term: search_term
+      },
+      queryParamsHandling: 'merge' }
+    );
   }
 
   async ngOnInit() {
