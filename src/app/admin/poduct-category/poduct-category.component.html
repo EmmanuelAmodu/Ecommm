@@ -3,7 +3,10 @@
     routerLink="/admin/category"
     [class.active]="categoryParams && !categoryParams.category"
     class="list-group-item list-group-item-action">
-        All categories
+        Add category
+        <span class="badge badge-light" (click)="open(content)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </span>
     </a>
     
     <div 
@@ -11,8 +14,14 @@
     class="list-group-item list-group-item-action">
         <a
         routerLink="/admin/category"
-        [queryParams]="{ category: c.$key}">
+        [queryParams]="{ category: c.$key}"> 
             {{ c.name }}
+            <span class="badge badge-light" (click)="open(content)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+            <span class="badge badge-light" (click)="open(content)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </span>
         </a>
 
         <div class="list-group" *ngIf="categoryParams.category == c.$key">
@@ -23,7 +32,26 @@
             class="list-group-item list-group-item-action"
             [class.active]="categoryParams.subcategory === sub.name">
                 {{ sub.name }}
+                <span class="badge badge-light" (click)="open(content)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </span>
             </a>
         </div>
     </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>
+  

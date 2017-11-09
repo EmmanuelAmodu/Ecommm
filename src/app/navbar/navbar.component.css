@@ -138,6 +138,10 @@ li {
     margin: 8px 10px 0px 0px;
     float: left;
 }
+#navbarsExampleDefault {
+    height: 50px;
+    overflow: hidden;
+}
 
 @media screen and (max-width: 1000px) {
     .nav-text {

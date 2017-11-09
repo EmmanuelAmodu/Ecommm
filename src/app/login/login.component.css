@@ -66,12 +66,10 @@ button:active {
     position: absolute;
     width: 1px;
 }
-  
-  .icons {
+.icons {
     display: none;
-  }
-  
-  .icon {
+}
+.icon {
     display: inline-block;
     fill: #606468;
     font-size: 16px;
@@ -79,14 +77,13 @@ button:active {
     height: 1em;
     vertical-align: middle;
     width: 1em;
-  }
-  
-  a {
+}
+a {
     color: #cb9905;
     outline: 0;
     text-decoration: none;
     font-weight: bold;
-  }
+}
   
   a:focus,
   a:hover {

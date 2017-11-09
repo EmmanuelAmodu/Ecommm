@@ -17,3 +17,11 @@ a {
     margin: auto;
     top: 50px;
 }
+.badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 10px 0 0 ;
+    background: #ffc107;
+    float: right;
+}
