@@ -174,9 +174,9 @@ li {
     width: 211px;
     display: none;
     top: 0;
-    left: 194px;
-    height: 354px;
+    left: 199px;
     position: absolute;
+    background: #fff;
 }
 .menu-item:hover>.navLayerWrapper {
     display: block;
@@ -194,7 +194,6 @@ li {
 .submenu>.column {
     float: left;
     width: 180px;
-    height: 343px;
     margin: 5px 15px;
     overflow: hidden;
 }

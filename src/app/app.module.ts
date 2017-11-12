@@ -42,6 +42,7 @@ import { PreloaderComponent } from './preloader/preloader.component';
 import { EditCategoryComponent } from './admin/product-category/edit-category/edit-category.component';
 import { EditSubcategoryComponent } from './admin/product-category/edit-subcategory/edit-subcategory.component';
 import { KeysPipe } from './keys.pipe';
+import { SlideshowComponent } from './slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { KeysPipe } from './keys.pipe';
     PreloaderComponent,
     EditCategoryComponent,
     EditSubcategoryComponent,
-    KeysPipe
+    KeysPipe,
+    SlideshowComponent
   ],
   imports: [
     Angular4PaystackModule,

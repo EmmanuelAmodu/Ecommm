@@ -17,12 +17,15 @@ export class ProductComponent implements  OnInit {
   filteredProducts: Product[] = [];
   categoryParams: any = {};
   cart$: Observable<ShoppingCart>;
+  showPreloader: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private shoppingCartService: ShoppingCartService
-  ) {  }
+  ) {
+    this.showPreloader = true;
+   }
 
   async ngOnInit() {
     // tslint:disable-next-line:no-unused-expression
@@ -33,6 +36,8 @@ export class ProductComponent implements  OnInit {
   private populateProducts() {
     this.productService.getAll().switchMap(products => {
       this.products = products;
+      // tslint:disable-next-line:curly
+      if (products) this.showPreloader = false;
       return this.route.queryParamMap;
     })
     .subscribe(params => {
