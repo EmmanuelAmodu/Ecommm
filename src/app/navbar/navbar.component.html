@@ -17,29 +17,39 @@
           [class.fa-bars]="!category_toggle" 
         aria-hidden="true"></i>
 
-        <div class="multi-sub-menu clearfix" *ngIf="category_toggle && categories">
-          <div class="left-menu-block">
-            <div class="menu-block" *ngFor="let c of categories">
-              <h3>
-                <a
-                  routerLink="/"
-                  [queryParams]="{ category: c.$key }">
-                {{ c.name }}
+        <ul class="menu-items"  *ngIf="category_toggle && categories">
+            <div class="arrow-border"></div>
+
+            <li class="menu-item"  *ngFor="let c of categories">
+              <a class="main-category"
+                routerLink="/"
+                [queryParams]="{ category: c.$key }">
+
+                <span class="nav-subTxt">{{ c.name }}</span>
+                <i class="fa fa-angle-right"></i>
+
               </a>
-              </h3>
-              <ul class="left-menu-block">
-                <li *ngFor="let subCat of c.subCategries">
-                  <a 
-                    routerLink="/"
-                    [queryParams]="{ category: c.$key, subCategory: subCat.name }" 
-                    class="sub-menu-links">
-                      <i class="fa fa-angle-right"></i>{{ subCat.name }}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
+              <div class="navLayerWrapper">
+                <div class="submenu">
+                  <div class="column">
+
+                      <div class="categories" *ngFor="let subCat of c.subCategories | keys">
+                          <a 
+                            routerLink="/"
+                            [queryParams]="{ category: c.$key, subCategory: subCat }" 
+                          class="category defaultCursor">
+                          {{ subCat }}
+                          </a>
+                      </div>
+                      
+                  </div>
+                </div>
+              </div>
+
+            </li>
+
+        </ul>
 
       </div>
 

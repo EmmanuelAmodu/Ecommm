@@ -14,16 +14,33 @@ export class CategoryService {
     });
   }
 
-  getOneCategory(categoryId) {
+  getAllSubCategory(categoryId: string) {
+    return this.db.list(`/categories/${categoryId}/subCategories`);
+  }
+
+  getCategory(categoryId) {
     return this.db.object(`/categories/${categoryId}`);
   }
 
-  create(category) {
-    return this.db.list('/categories').push(category);
+  getSubCategory(categoryId: string, subCategoryId: string) {
+    return this.db.object(`/categories/${categoryId}/subCategories/${subCategoryId}`);
   }
 
-  update(categoryId, category) {
-    this.db.object(`/categories/${categoryId}`).update(category);
+  createCategory(categoryId, category) {
+    return this.db.object(`/categories/${categoryId}`).set(category);
+  }
+
+  createSubCategory(categoryId, subCategoryId, subcategory) {
+    console.log(categoryId, subCategoryId, subcategory);
+    return this.db.object(`/categories/${categoryId}/subCategories/${subCategoryId}`).set(subcategory);
+  }
+
+  updateCategory(categoryId, category) {
+    return this.db.object(`/categories/${categoryId}`).update(category);
+  }
+
+  updateSubCategory(categoryId: string, subCategoryId: string, subCategory) {
+    return this.db.object(`/categories/${categoryId}/subCategories/${subCategoryId}`).update(subCategory);
   }
 
 }

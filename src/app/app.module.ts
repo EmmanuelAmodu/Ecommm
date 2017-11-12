@@ -37,7 +37,11 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
-import { PoductCategoryComponent } from './admin/poduct-category/poduct-category.component';
+import { ProductCategoryComponent } from './admin/product-category/product-category.component';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { EditCategoryComponent } from './admin/product-category/edit-category/edit-category.component';
+import { EditSubcategoryComponent } from './admin/product-category/edit-subcategory/edit-subcategory.component';
+import { KeysPipe } from './keys.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { PoductCategoryComponent } from './admin/poduct-category/poduct-category
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    PoductCategoryComponent,
+    ProductCategoryComponent,
+    PreloaderComponent,
+    EditCategoryComponent,
+    EditSubcategoryComponent,
+    KeysPipe
   ],
   imports: [
     Angular4PaystackModule,
@@ -92,7 +100,7 @@ import { PoductCategoryComponent } from './admin/poduct-category/poduct-category
       },
       {
         path: 'admin/category',
-        component: PoductCategoryComponent,
+        component: ProductCategoryComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
       {

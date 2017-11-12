@@ -5,10 +5,25 @@ export interface AppUser {
 }
 
 export interface ICategory {
+    $key: string;
     name: string;
     description: string;
-    subCategries: ICategory[];
     isActive: boolean;
+}
+
+export class SubCategory implements ICategory {
+    $key = '';
+    name = '';
+    description = '';
+    isActive = true;
+}
+
+export class Category implements ICategory {
+    $key = '';
+    name = '';
+    description = '';
+    subCategories: SubCategory[] = [];
+    isActive = true;
 }
 
 export interface IProduct {
@@ -16,6 +31,7 @@ export interface IProduct {
     title: string;
     price: number;
     category: string;
+    subCategory: string;
     description: string;
     images: object[];
 }
@@ -38,6 +54,7 @@ export class Product implements IProduct {
         title?: string,
         price?: number,
         category?: string,
+        subCategory?: string,
         description?: string,
         imageUrls?: object[]
     ) {
@@ -47,6 +64,8 @@ export class Product implements IProduct {
         if (!this.price) this.price = 0;
         // tslint:disable-next-line:curly
         if (!this.category) this.category = '';
+        // tslint:disable-next-line:curly
+        if (!this.subCategory) this.subCategory = '';
         // tslint:disable-next-line:curly
         if (!this.description) this.description = '';
     }

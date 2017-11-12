@@ -1,0 +1,28 @@
+<div class="modal-container" *ngIf="showModal">
+  <div class="modalT">
+      <div class="modal-header">
+          <h4 class="modal-title">Add category</h4>
+          <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true" (click)="close()">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="save()">
+              <div class="form-group">
+                  <label for="name">Category Name</label>
+                  <input type="text" 
+                      #name="ngModel" 
+                      [(ngModel)]="subCategory.name" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                  <label for="description">Category Description</label>
+                  <textarea type="text" 
+                      #description="ngModel" 
+                      [(ngModel)]="subCategory.description" 
+                      class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+  </div>
+</div>

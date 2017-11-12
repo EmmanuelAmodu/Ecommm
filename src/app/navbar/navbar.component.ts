@@ -30,7 +30,6 @@ export class NavbarComponent implements OnInit {
      this.categoryService.getAllCategories().subscribe(d => {
       this.categories = d;
     });
-    console.log(window.innerWidth);
   }
 
   logout(): void {

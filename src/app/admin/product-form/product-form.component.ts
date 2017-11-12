@@ -1,6 +1,6 @@
 import { UploadFormComponent } from '../../upload-form/upload-form.component';
 import { ViewChild } from '@angular/core';
-import { Product, Upload } from './../../models/models';
+import { Product, Upload, SubCategory } from './../../models/models';
 import { CategoryService } from './../../category/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../product/product.service';
@@ -16,6 +16,8 @@ import 'rxjs/add/operator/take';
 })
 export class ProductFormComponent implements OnInit {
   category$;
+  subCategories: SubCategory[] = [];
+
   closeResult: string;
   id: string;
   product: Product = new Product();
@@ -39,7 +41,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(content) {
-    console.log(this.product);
     // tslint:disable-next-line:curly
     if (this.id) this._productService.update(this.id, this.product);
     // tslint:disable-next-line:curly
@@ -60,6 +61,12 @@ export class ProductFormComponent implements OnInit {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  fetchSubCategory() {
+    this._categoryService.getAllSubCategory(this.product.category).subscribe(sub => {
+      this.subCategories = sub;
     });
   }
 
