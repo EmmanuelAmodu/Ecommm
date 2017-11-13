@@ -1,7 +1,7 @@
 .slideshow-container {
     margin-top: -14px;
 }
-.slideshow img {
+.slideshow {
     width: 100%;
     height: 400px;
     position: relative;
