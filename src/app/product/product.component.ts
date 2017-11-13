@@ -25,7 +25,7 @@ export class ProductComponent implements  OnInit {
     private shoppingCartService: ShoppingCartService
   ) {
     this.showPreloader = true;
-   }
+  }
 
   async ngOnInit() {
     // tslint:disable-next-line:no-unused-expression

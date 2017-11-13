@@ -43,6 +43,8 @@ import { EditCategoryComponent } from './admin/product-category/edit-category/ed
 import { EditSubcategoryComponent } from './admin/product-category/edit-subcategory/edit-subcategory.component';
 import { KeysPipe } from './keys.pipe';
 import { SlideshowComponent } from './slideshow/slideshow.component';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -80,8 +82,9 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
     FormsModule,
     CustomFormsModule,
     DataTableModule,
+    NgxCarouselModule,
     RouterModule.forRoot([
-      { path: '', component: ProductComponent },
+      { path: '', component: HomeComponent },
       { path: 'products', component: ProductComponent },
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
