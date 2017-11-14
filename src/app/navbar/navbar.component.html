@@ -22,8 +22,7 @@
 
             <li class="menu-item"  *ngFor="let c of categories">
               <a class="main-category"
-                routerLink="/"
-                [queryParams]="{ category: c.$key }">
+                [routerLink]="'/category/'+c.$key">
 
                 <span class="nav-subTxt">{{ c.name }}</span>
                 <i class="fa fa-angle-right"></i>
@@ -36,8 +35,8 @@
 
                       <div class="categories" *ngFor="let subCat of c.subCategories | keys">
                           <a 
-                            routerLink="/"
-                            [queryParams]="{ category: c.$key, subCategory: subCat }" 
+                            [routerLink]="'/category/'+c.$key"
+                            [queryParams]="{ subCategory: subCat }" 
                           class="category defaultCursor">
                           {{ subCat }}
                           </a>

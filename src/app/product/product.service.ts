@@ -1,5 +1,5 @@
 import { Product } from '../models/models';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -9,23 +9,30 @@ export class ProductService {
     private db: AngularFireDatabase
   ) { }
 
-  create(product) {
+  create(product: Product) {
     return this.db.list('/products').push(product);
   }
 
-  update(productId, product) {
+  update(productId: string, product: Product) {
     this.db.object(`/products/${productId}`).update(product);
   }
 
-  getAll() {
-    return this.db.list('/products');
+  getProducts(categoryId?: string, limitTo?: number): FirebaseListObservable<Product[]> {
+    return this.db.list('/products', {
+      query:
+      {
+         orderByChild: 'category',
+         equalTo: categoryId,
+         limitToFirst: limitTo
+      }
+    });
   }
 
-  getOne(productId) {
+  getOne(productId: string): FirebaseObjectObservable<Product> {
     return this.db.object(`/products/${productId}`);
   }
 
-  delete(productId) {
+  delete(productId: string) {
     return this.db.object(`/products/${productId}`).remove();
   }
 }

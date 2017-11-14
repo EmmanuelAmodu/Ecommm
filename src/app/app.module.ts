@@ -45,6 +45,8 @@ import { KeysPipe } from './keys.pipe';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
+import { AdminSliderComponent } from './admin/admin-slider/admin-slider.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import 'hammerjs';
     EditCategoryComponent,
     EditSubcategoryComponent,
     KeysPipe,
-    SlideshowComponent
+    SlideshowComponent,
+    AdminSliderComponent,
+    CategoryComponent
   ],
   imports: [
     Angular4PaystackModule,
@@ -88,6 +92,7 @@ import 'hammerjs';
       { path: 'products', component: ProductComponent },
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'category/:categoryID', component: CategoryComponent },
 
       { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: MyOrdersComponent, canActivate: [AuthGuard] },

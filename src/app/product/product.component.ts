@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { ICategory, Product, ShoppingCart } from './../models/models';
+import { Product, ShoppingCart } from './../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -13,6 +13,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements  OnInit {
+  @Input('category') category: string;
   products: Product[] = [];
   filteredProducts: Product[] = [];
   categoryParams: any = {};
@@ -34,7 +35,7 @@ export class ProductComponent implements  OnInit {
   }
 
   private populateProducts() {
-    this.productService.getAll().switchMap(products => {
+    this.productService.getProducts(this.category).switchMap(products => {
       this.products = products;
       // tslint:disable-next-line:curly
       if (products) this.showPreloader = false;
@@ -42,7 +43,6 @@ export class ProductComponent implements  OnInit {
     })
     .subscribe(params => {
       this.categoryParams = {
-        category: params.get('category'),
         subCategory: params.get('subcategory'),
         search_term: params.get('search_term')
       };
@@ -51,11 +51,8 @@ export class ProductComponent implements  OnInit {
   }
 
   private applyFilter() {
-    const filterByCat = (this.categoryParams.category) ?
-      this.products.filter(p => p.category === this.categoryParams.category) : this.products;
-
     const filterBySubCat = (this.categoryParams.subCategory) ?
-      this.products.filter(p => p.subCategory === this.categoryParams.subCategory) : filterByCat;
+      this.products.filter(p => p.subCategory === this.categoryParams.subCategory) : this.products;
 
     this.filteredProducts = (this.categoryParams.search_term) ?
       this.products.filter(p => {
