@@ -1,0 +1,21 @@
+.modal-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1025;
+}
+.modalT {
+    position: relative;
+    top: 20%;
+    position: relative;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    background: antiquewhite;
+    border-radius: 5px;
+}

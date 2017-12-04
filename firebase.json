@@ -3,6 +3,10 @@
     "public": "dist",
     "rewrites": [
       {
+        "source": "/fns/**",
+        "function": "fns"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

@@ -1,4 +1,5 @@
 <div class="container">
+    <p>Featured Products</p>
     <div class="row" *ngIf="cart$ | async as cart">
         <ng-container *ngFor="let p of filteredProducts; let i = index">
             <div class="col-3 check-heigth" style="margin-bottom: 20px; min-width: 270px">

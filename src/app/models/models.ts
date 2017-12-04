@@ -5,14 +5,12 @@ export interface AppUser {
 }
 
 export interface ICategory {
-    $key: string;
     name: string;
     description: string;
     isActive: boolean;
 }
 
 export class SubCategory implements ICategory {
-    $key = '';
     name = '';
     description = '';
     isActive = true;

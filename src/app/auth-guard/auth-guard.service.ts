@@ -21,5 +21,4 @@ export class AuthGuard implements CanActivate {
     private _router: Router
   ) { }
 
-
 }

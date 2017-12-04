@@ -22,6 +22,9 @@
             <span class="badge badge-light" (click)="openSubCategoryModal(c.$key)">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </span>
+            <span class="badge badge-light" (click)="deleteCategoryA(c.$key)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
         </a>
 
         <div class="list-group" *ngIf="categoryParams.category == c.$key">
@@ -35,6 +38,9 @@
                 <span class="badge badge-light" (click)="openSubCategoryModal(c.$key, sub)">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </span>
+                <span class="badge badge-light" (click)="deleteCategoryA(c.$key, sub)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </span>
             </a>
         </div>
     </div>
@@ -42,3 +48,4 @@
 
 <app-edit-category #editCategory ></app-edit-category>
 <app-edit-subcategory #editSubCategory ></app-edit-subcategory>
+<app-delete-category #deleteCategory></app-delete-category>

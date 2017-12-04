@@ -1,3 +1,4 @@
+import { Category } from '../models/models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -30,17 +31,24 @@ export class CategoryService {
     return this.db.object(`/categories/${categoryId}`).set(category);
   }
 
-  createSubCategory(categoryId, subCategoryId, subcategory) {
-    console.log(categoryId, subCategoryId, subcategory);
-    return this.db.object(`/categories/${categoryId}/subCategories/${subCategoryId}`).set(subcategory);
+  createSubCategory(categoryId, subcategory) {
+    console.log(categoryId, subcategory.name, subcategory);
+    return this.db.object(`/categories/${categoryId}/subCategories/${subcategory.name}`).set(subcategory);
   }
 
   updateCategory(categoryId, category) {
     return this.db.object(`/categories/${categoryId}`).update(category);
   }
 
-  updateSubCategory(categoryId: string, subCategoryId: string, subCategory) {
-    return this.db.object(`/categories/${categoryId}/subCategories/${subCategoryId}`).update(subCategory);
+  updateSubCategory(categoryId: string, subCatKey, subCategory) {
+    this.db.object(`/categories/${categoryId}/subCategories/${subCatKey}`).remove();
+    return this.db.object(`/categories/${categoryId}/subCategories/${subCategory.name}`).update(subCategory);
+  }
+
+  delete(categoryId: string, subCatKey?: string): firebase.Promise<void> {
+    let str = '';
+    subCatKey ? str = `/categories/${categoryId}/subCategories/${subCatKey}` : str = `/categories/${categoryId}`;
+    return this.db.object(str).remove();
   }
 
 }

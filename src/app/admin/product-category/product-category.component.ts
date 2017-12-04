@@ -1,3 +1,4 @@
+import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { Category, ICategory } from './../../models/models';
@@ -19,6 +20,7 @@ export class ProductCategoryComponent {
 
   @ViewChild('editCategory') editCategoryModal: EditCategoryComponent;
   @ViewChild('editSubCategory') editSubCategoryModal: EditSubcategoryComponent;
+  @ViewChild('deleteCategory') deleteCategoryModal: DeleteCategoryComponent;
 
   constructor(
     private categoryService: CategoryService,
@@ -36,6 +38,10 @@ export class ProductCategoryComponent {
 
   openSubCategoryModal(categoryId?: string, subCategoryId?: string) {
     this.editSubCategoryModal.show(categoryId, subCategoryId);
+  }
+
+  deleteCategoryA(catId: string, subCatId?: string) {
+    this.deleteCategoryModal.show(catId, subCatId);
   }
 
 }

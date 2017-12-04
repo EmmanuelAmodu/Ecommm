@@ -47,6 +47,7 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
 import { AdminSliderComponent } from './admin/admin-slider/admin-slider.component';
 import { CategoryComponent } from './category/category.component';
+import { DeleteCategoryComponent } from './admin/product-category/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { CategoryComponent } from './category/category.component';
     KeysPipe,
     SlideshowComponent,
     AdminSliderComponent,
-    CategoryComponent
+    CategoryComponent,
+    DeleteCategoryComponent
   ],
   imports: [
     Angular4PaystackModule,

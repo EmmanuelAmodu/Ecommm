@@ -1,3 +1,4 @@
+import { AppUser } from './../models/models';
 import { OrderService } from './../order/order.service';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class OrderSuccessComponent implements OnInit {
   paymentId: string;
   order: any;
+  user: any;
 
   constructor(
     private Route: ActivatedRoute,
@@ -28,8 +30,9 @@ export class OrderSuccessComponent implements OnInit {
 
   async ngOnInit() {
     const params = this.Route.params;
-    const user = await this.authService.user$;
-    user.subscribe(u => {
+    this.authService.user$.subscribe(u => {
+      console.log(u);
+      this.user = u;
         const userId = u.uid;
         params.subscribe(d => {
           const orderId = d['id'];

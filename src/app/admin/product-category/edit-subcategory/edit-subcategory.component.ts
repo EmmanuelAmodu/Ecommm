@@ -24,7 +24,6 @@ export class EditSubcategoryComponent {
   show(id?: string, key?: string) {
     this.categoryId = id;
     this.subCatKey = key;
-    console.log(id, key);
     id && key ? (this.preloader = true, this.categoryService.getSubCategory(id, key).subscribe(subCategory => {
       this.subCategory = subCategory;
       this.showModal = true;
@@ -34,12 +33,11 @@ export class EditSubcategoryComponent {
   }
 
   save() {
-    console.log(this.subCategory.name);
     this.subCatKey ?
       this.categoryService.updateSubCategory(this.categoryId, this.subCatKey, this.subCategory).then(res => {
         this.close();
       }) :
-        this.categoryService.createSubCategory(this.categoryId, this.getTitle(), this.subCategory).then(res => {
+        this.categoryService.createSubCategory(this.categoryId, this.subCategory).then(res => {
           this.close();
         });
   }
@@ -49,15 +47,6 @@ export class EditSubcategoryComponent {
     this.categoryId = undefined;
     this.subCatKey = undefined;
     this.showModal = false;
-  }
-
-  private getTitle() {
-    delete this.subCategory.$key;
-    let title = this.subCategory.name.trim();
-    while (title.indexOf(' ') > -1) {
-      title = title.replace(' ', '_');
-    }
-    return title.toLowerCase();
   }
 
 }

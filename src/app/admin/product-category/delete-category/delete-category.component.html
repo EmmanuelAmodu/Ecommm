@@ -1,0 +1,22 @@
+<div class="modal-container" *ngIf="catId">
+  <div class="modalT">
+      <div class="modal-header">
+          <h4 class="modal-title">Delete category</h4>
+          <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true" (click)="close()">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are sure you want to delete this 
+          <span *ngIf="!subCatId">category: <samp>{{ category.name }}</samp></span>
+          <span *ngIf="subCatId">subcategory: <samp>{{ category.name }} </samp>in category <samp>{{ catId }}</samp></span>
+        </p>
+        <p>
+          description: <samp>{{ category.description }}</samp>
+        </p>
+        <button type="submit" class="btn btn-danger" (click)="delete()" >delete</button>
+        <button type="submit" class="btn btn-primary float-right" (click)="close()" >cancel</button>
+      </div>
+  </div>
+</div>
