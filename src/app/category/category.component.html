@@ -1,3 +1,10 @@
-<p>
-  category works!
-</p>
+<div class="container">
+  <div class="row"  *ngIf="cart$ | async as cart">
+      <ng-container *ngFor="let p of products; let i = index">
+          <div class="col-3 check-heigth" style="margin-bottom: 20px; min-width: 270px">
+              <product-card [product]="p" [shoppingCart]="cart"></product-card>
+          </div>
+      </ng-container>
+  </div> 
+</div>
+<app-preloader [show]="showPreloader"></app-preloader> 
