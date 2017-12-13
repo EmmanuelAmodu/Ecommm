@@ -48,6 +48,7 @@ import 'hammerjs';
 import { AdminSliderComponent } from './admin/admin-slider/admin-slider.component';
 import { CategoryComponent } from './category/category.component';
 import { DeleteCategoryComponent } from './admin/product-category/delete-category/delete-category.component';
+import { ConsultancyComponent } from './consultancy/consultancy.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { DeleteCategoryComponent } from './admin/product-category/delete-categor
     SlideshowComponent,
     AdminSliderComponent,
     CategoryComponent,
-    DeleteCategoryComponent
+    DeleteCategoryComponent,
+    ConsultancyComponent
   ],
   imports: [
     Angular4PaystackModule,

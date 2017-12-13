@@ -32,7 +32,6 @@ export class CategoryService {
   }
 
   createSubCategory(categoryId, subcategory) {
-    console.log(categoryId, subcategory.name, subcategory);
     return this.db.object(`/categories/${categoryId}/subCategories/${subcategory.name}`).set(subcategory);
   }
 
