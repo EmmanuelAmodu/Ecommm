@@ -1,4 +1,4 @@
-import { DataTableResource, DataTableModule } from 'angular-4-data-table';
+import { DataTableResource, DataTableModule } from 'angular5-data-table';
 import { Product } from '../../models/models';
 import { ProductService } from '../../product/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -19,8 +19,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService
   ) {
-    this.subscription = this.productService.getProducts()
-      .subscribe(products => {
+    this.subscription = this.productService.getProducts().valueChanges()
+      .subscribe((products: any) => {
         this.products = products;
         this.initializeTable(products);
       });

@@ -34,7 +34,7 @@ export class ProductFormComponent implements OnInit {
     this.category$ = _categoryService.getAllCategories();
     this.id = this._route.snapshot.paramMap.get('id');
     // tslint:disable-next-line:curly
-    if (this.id) this._productService.getOne(this.id).take(1).subscribe(product => this.product = product);
+    if (this.id) this._productService.getOne(this.id).valueChanges().take(1).subscribe(product => this.product = product);
    }
 
   ngOnInit() {
@@ -65,9 +65,11 @@ export class ProductFormComponent implements OnInit {
   }
 
   fetchSubCategory() {
-    this._categoryService.getAllSubCategory(this.product.category).subscribe(sub => {
-      this.subCategories = sub;
-    });
+    this._categoryService.getAllSubCategory(this.product.category)
+        .valueChanges()
+            .subscribe((sub: any) => {
+                this.subCategories = sub;
+            });
   }
 
   private getDismissReason(reason: any): string {

@@ -1,6 +1,5 @@
 import { AppUser } from '../models/models';
 import { ActivatedRoute } from '@angular/router';
-import { User } from './user';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,46 +11,46 @@ import 'rxjs/add/Observable/of';
 @Injectable()
 export class AuthService {
 
-  public user$: Observable<User>;
+    public user$;
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private route: ActivatedRoute,
-    private userService: UserService
-  ) {
-    this.user$ = afAuth.authState;
-  }
+    constructor(
+        private afAuth: AngularFireAuth,
+        private route: ActivatedRoute,
+        private userService: UserService
+    ) {
+        this.user$ = afAuth.authState;
+    }
 
-  loginWithGoogle() {
-    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
+    loginWithGoogle() {
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        localStorage.setItem('returnUrl', returnUrl);
+        this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    }
 
-  loginWithFB() {
-    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-  }
+    loginWithFB() {
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        localStorage.setItem('returnUrl', returnUrl);
+        this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    }
 
-  loginWithPassword(email: string, password: string) {
-    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.auth.signInWithEmailAndPassword(email, password);
-  }
+    loginWithPassword(email: string, password: string) {
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        localStorage.setItem('returnUrl', returnUrl);
+        this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    }
 
-  logout() {
-    this.afAuth.auth.signOut();
-  }
+    logout() {
+        this.afAuth.auth.signOut();
+    }
 
-  get appUser$(): Observable<AppUser> {
-    return this.user$
-      .switchMap(user => {
-        // tslint:disable-next-line:curly
-        if (user) return this.userService.get(user.uid);
-        return Observable.of(null);
-      });
-  }
+    get appUser$(): Observable<AppUser> {
+        return this.user$
+        .switchMap(user => {
+            // tslint:disable-next-line:curly
+            if (user) return this.userService.get(user.uid);
+            return Observable.of(null);
+        });
+    }
 }
 
 

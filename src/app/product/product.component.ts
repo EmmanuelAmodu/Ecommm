@@ -35,7 +35,7 @@ export class ProductComponent implements  OnInit {
   }
 
   private populateProducts() {
-    this.productService.getProducts(this.category).switchMap(products => {
+    this.productService.getProducts(this.category).valueChanges().switchMap((products: any) => {
       this.products = products;
       // tslint:disable-next-line:curly
       if (products) this.showPreloader = false;

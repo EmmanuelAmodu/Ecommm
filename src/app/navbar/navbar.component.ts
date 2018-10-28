@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
     private categoryService: CategoryService,
     private shoppingCartService: ShoppingCartService
   ) {
-     this.categoryService.getAllCategories().subscribe(d => {
+     this.categoryService.getAllCategories()
+     .valueChanges().subscribe(d => {
       this.categories = d;
     });
   }

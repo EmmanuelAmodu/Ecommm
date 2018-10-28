@@ -1,4 +1,4 @@
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireObject} from 'angularfire2/database';
 import { Order, UserOrders } from './../../models/models';
 import { OrderService } from './../../order/order.service';
 import { Component } from '@angular/core';
@@ -13,7 +13,7 @@ export class AdminOrdersComponent {
   orders: UserOrders[] = [];
 
   constructor(private orderService: OrderService) {
-      this.orderService.getAllUsersOrders().subscribe(d => {
+      this.orderService.getAllUsersOrders().valueChanges().subscribe(d => {
         this.flattenOrders(d);
       });
   }

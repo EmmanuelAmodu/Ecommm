@@ -27,7 +27,9 @@ export class CategoryComponent implements OnInit {
   loadProducts() {
     this.category$.subscribe(category => {
       this.showPreloader = true;
-      this.productService.getProducts(category).subscribe(product => {
+      this.productService.getProducts(category)
+      .valueChanges()
+      .subscribe((product: any) => {
         this.subCategory$.subscribe(subCategory => {
           this.products = subCategory ? product.filter(p => p.subCategory === subCategory) : product;
           this.showPreloader = false;

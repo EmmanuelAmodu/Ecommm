@@ -21,12 +21,13 @@ export class EditCategoryComponent {
   ) { }
 
   show(id?: string) {
-    id ? (this.preloader = true, this.categoryService.getCategory(id).subscribe(category => {
-      this.category = category;
-      this.showModal = true;
-      this.preloader = false;
-    })) :
-    this.showModal = true;
+    id ? (this.preloader = true, this.categoryService.getCategory(id)
+        .valueChanges()
+        .subscribe((category: any) => {
+            this.category = category;
+            this.showModal = true;
+            this.preloader = false;
+        })) : this.showModal = true;
   }
 
   close() {
@@ -35,7 +36,7 @@ export class EditCategoryComponent {
   }
 
   save() {
-    let saveState: firebase.Promise<void>;
+    let saveState: Promise<void>;
     this.category.$key ? saveState = this.categoryService.updateCategory(this.category.$key, this.category) :
       saveState = this.categoryService.createCategory(this.getTitle(), this.category);
 

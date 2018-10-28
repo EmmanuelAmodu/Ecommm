@@ -24,12 +24,13 @@ export class EditSubcategoryComponent {
   show(id?: string, key?: string) {
     this.categoryId = id;
     this.subCatKey = key;
-    id && key ? (this.preloader = true, this.categoryService.getSubCategory(id, key).subscribe(subCategory => {
-      this.subCategory = subCategory;
-      this.showModal = true;
-      this.preloader = false;
-    })) :
-    this.showModal = true;
+    id && key ? (this.preloader = true, this.categoryService.getSubCategory(id, key)
+    .valueChanges()
+        .subscribe((subCategory: any) => {
+            this.subCategory = subCategory;
+            this.showModal = true;
+            this.preloader = false;
+        })) : this.showModal = true;
   }
 
   save() {

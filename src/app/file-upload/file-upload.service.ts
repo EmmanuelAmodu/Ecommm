@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import { Injectable, EventEmitter } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
 import { Upload, Snapshot } from '../models/models';
 import * as firebase from 'firebase';
 
@@ -11,7 +11,7 @@ export class UploadService {
 
   // tslint:disable-next-line:no-inferrable-types
   private basePath = `/products_img`;
-  uploads: FirebaseListObservable<Upload[]>;
+  uploads: AngularFireList <Upload[]>;
   upload: Upload[];
 
   pushUpload(upload: Upload, productTitle: string, emitter?: Function) {

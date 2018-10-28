@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Observable';
-import { async } from '@angular/core/testing';
 import { Product, ShoppingCart } from './../models/models';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
@@ -9,6 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ShoppingCartService {
 
+ private arr = [];
   constructor(
     private db: AngularFireDatabase
   ) { }
@@ -16,7 +16,7 @@ export class ShoppingCartService {
   public async getCart(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId)
-      .map(x => new ShoppingCart(x.items));
+      .valueChanges().map((x: any) => new ShoppingCart(x.items));
   }
 
   async addToCart(product: Product) {
@@ -55,7 +55,7 @@ export class ShoppingCartService {
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
     const item$ = this.getItem(cartId, product.$key);
-    item$.take(1).subscribe(item => {
+    item$.valueChanges().take(1).subscribe((item: any) => {
       const quantity = (item.quantity || 0) + change;
       // tslint:disable-next-line:curly
       if (quantity === 0) item$.remove();

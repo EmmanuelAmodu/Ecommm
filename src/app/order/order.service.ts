@@ -1,7 +1,7 @@
 import { Order } from './../models/models';
 import { AuthService } from './../auth/auth.service';
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 @Injectable()

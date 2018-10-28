@@ -18,9 +18,9 @@ export class DeleteCategoryComponent {
   show(catId: string, subCatId: string) {
     this.catId = catId;
     subCatId ?
-      (this.subCatId = subCatId, this.categoryService.getSubCategory(catId, subCatId)
+      (this.subCatId = subCatId, this.categoryService.getSubCategory(catId, subCatId).valueChanges()
         .subscribe(category => this.category = category)) :
-          this.categoryService.getCategory(catId).subscribe(category => this.category = category);
+          this.categoryService.getCategory(catId).valueChanges().subscribe(category => this.category = category);
   }
 
   close() {

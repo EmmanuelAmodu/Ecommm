@@ -8,11 +8,7 @@ export class CategoryService {
   constructor(private db: AngularFireDatabase) { }
 
   getAllCategories() {
-    return this.db.list('/categories', {
-      query: {
-        orderByChild: 'name'
-      }
-    });
+    return this.db.list('/categories', ref => ref.orderByChild('name'));
   }
 
   getAllSubCategory(categoryId: string) {
@@ -44,7 +40,7 @@ export class CategoryService {
     return this.db.object(`/categories/${categoryId}/subCategories/${subCategory.name}`).update(subCategory);
   }
 
-  delete(categoryId: string, subCatKey?: string): firebase.Promise<void> {
+  delete(categoryId: string, subCatKey?: string): Promise<void> {
     let str = '';
     subCatKey ? str = `/categories/${categoryId}/subCategories/${subCatKey}` : str = `/categories/${categoryId}`;
     return this.db.object(str).remove();

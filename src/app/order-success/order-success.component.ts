@@ -22,7 +22,7 @@ export class OrderSuccessComponent implements OnInit {
 
   private async getOrder(userId: string, orderId: string) {
     const orderO = await this.orderService.getUserOrders(userId, orderId);
-    orderO.subscribe(order => {
+    orderO.valueChanges().subscribe(order => {
       this.order = order;
       console.log(order);
     });
