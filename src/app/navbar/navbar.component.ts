@@ -17,7 +17,7 @@ import { AppUser } from '../models/models';
 export class NavbarComponent implements OnInit {
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
-  categories: any[];
+  categories: any[] = [];
   category_toggle = false;
 
   constructor(
@@ -28,9 +28,13 @@ export class NavbarComponent implements OnInit {
     private shoppingCartService: ShoppingCartService
   ) {
      this.categoryService.getAllCategories()
-     .valueChanges().subscribe(d => {
-      this.categories = d;
-    });
+        .valueChanges().subscribe(ct => {
+            Object.keys(ct).map(e => {
+                let sinCat = ct[e];
+                sinCat.$key = e;
+                this.categories.push(sinCat);
+            });
+        });
   }
 
   logout(): void {

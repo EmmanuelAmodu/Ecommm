@@ -19,7 +19,8 @@ export class ProductService {
 
   getProducts(categoryId: string = "", limitTo: number = 30): AngularFireList<Product[]> {
     return this.db.list('/products', ref => {
-        return ref.limitToFirst(limitTo).orderByChild("category").equalTo(categoryId)
+        return categoryId ? ref.limitToFirst(limitTo).orderByChild("category").equalTo(categoryId) :
+        ref;
     });
   }
 
