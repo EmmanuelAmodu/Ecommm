@@ -26,16 +26,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private categoryService: CategoryService,
     private shoppingCartService: ShoppingCartService
-  ) {
-     this.categoryService.getAllCategories()
-        .valueChanges().subscribe(ct => {
-            Object.keys(ct).map(e => {
-                let sinCat = ct[e];
-                sinCat.$key = e;
-                this.categories.push(sinCat);
-            });
-        });
-  }
+  ) { }
 
   logout(): void {
     this._auth.logout();
@@ -53,5 +44,13 @@ export class NavbarComponent implements OnInit {
   async ngOnInit() {
     this. _auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.cart$ = await this.shoppingCartService.getCart();
+    this.categoryService.getAllCategories()
+    .valueChanges().subscribe(ct => {
+        Object.keys(ct).map(e => {
+            let sinCat = ct[e];
+            sinCat.$key = e;
+            this.categories.push(sinCat);
+        });
+    });
   }
 }

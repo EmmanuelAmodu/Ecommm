@@ -110,6 +110,7 @@ export class ShoppingCart {
             const item = itemsMap[productId];
             this.items.push(new ShoppingCartItem({...item, $key: productId}));
         }
+        console.log(this.items, itemsMap);
     }
 
     getQuantity(product: Product) {

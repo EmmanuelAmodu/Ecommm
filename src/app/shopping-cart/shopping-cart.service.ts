@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { Product, ShoppingCart } from './../models/models';
+import { Product, ShoppingCart, ShoppingCartItem } from './../models/models';
 import { AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take';
@@ -54,9 +54,9 @@ export class ShoppingCartService {
 
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
-    const item$ = this.getItem(cartId, product.$key);
-    item$.valueChanges().take(1).subscribe((item: any) => {
-      const quantity = (item.quantity || 0) + change;
+    const item$ = this.getItem(await cartId, product.$key);
+    item$.valueChanges().take(1).subscribe((item: ShoppingCartItem) => {
+      const quantity = (item ? item.quantity : 0) + change;
       // tslint:disable-next-line:curly
       if (quantity === 0) item$.remove();
       // tslint:disable-next-line:curly
